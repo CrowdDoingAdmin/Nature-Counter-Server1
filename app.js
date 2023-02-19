@@ -20,7 +20,7 @@ var healthCategoryRouter = require('./routes/healthCategoriesRouter');
 var nearParkRouter = require('./routes/nearParkRouter');
 var favoriteLocRouter = require('./routes/favoriteLocRouter');
 
-// const redisClient = require('./config/redis')
+const redisClient = require('./config/redis')
 
 const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
@@ -63,7 +63,6 @@ app.use(cookieParser());
 //app.use(decodeIDToken);
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log('1--');
 app.use('/', indexRouter);
 app.use('/articles', articleRouter);
 app.use('/benefits', benefitRouter);

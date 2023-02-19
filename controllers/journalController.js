@@ -20,7 +20,6 @@ module.exports = {
         try {
             const newEntry = new Journal(req.body);
             const savedEntry = await newEntry.save();
-            console.log('1----');
             res.json(savedEntry);
         } catch (err) {
             console.log('ERROR: ', err);

@@ -1,6 +1,6 @@
 const queryOverpass = require('@derhuerst/query-overpass')
 const geolib = require('geolib');
-// const cacheNearPark = require('../middleware/cacheNearPark');
+const cacheNearPark = require('../middleware/cacheNearPark');
 
 //const HealthCategories = require('../models/healthCategorySchema');
 
@@ -30,7 +30,7 @@ module.exports = {
                     })
                     //console.log('clearData :'+clearData)
                     const ordered = calcDistance.sort((a, b) => a.distance - b.distance)
-                    // cacheNearPark.caching(`${lat}_${long}`, ordered);
+                    cacheNearPark.caching(`${lat}_${long}`, ordered);
                     res.send(ordered)
                 })
                 .catch(console.error)

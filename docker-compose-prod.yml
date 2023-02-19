@@ -9,10 +9,8 @@ services:
       - 6379
 
   api:
-    depends_on:
-    - redis
-    build: .
-    # image: naturecounter/nature-counter:v0.0.1
+    # build: .
+    image: naturecounter/nature-counter:v0.0.1
 
     container_name: api
     restart: unless-stopped

@@ -5,8 +5,8 @@
   "scripts": {
     "prod": "./bin/www",
     "start": "node ./bin/www",
-    "devStart": "nodemon ./bin/www",
-    "test": "jest"
+    "devstart": "nodemon ./bin/www",
+    "test": "jest --no-cache"
   },
   "dependencies": {
     "@derhuerst/query-overpass": "^2.0.0",

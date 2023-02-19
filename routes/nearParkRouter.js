@@ -5,14 +5,13 @@ const cors = require('./cors');
 const authenticate = require('../config/authenticate');
 const NearParkController = require('../controllers/getParkController');
 const nearParkRouter = express.Router();
-// const cacheNearPark = require('../middleware/cacheNearPark');
+const cacheNearPark = require('../middleware/cacheNearPark');
 nearParkRouter.use(bodyParser.json());
 
 
 nearParkRouter.route('/')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-    // .get([cors.cors, cacheNearPark.getCached], NearParkController.getPark)
-    .get([cors.cors], NearParkController.getPark)
+    .get([cors.cors, cacheNearPark.getCached], NearParkController.getPark)
 
 
 module.exports = nearParkRouter;
