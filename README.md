@@ -1,12 +1,15 @@
 # Nature Counter Server
+This repository is for the backend server for the Nature Counter App hosted on Azure.
 
+It follows an MVC model and is constantly being improved!
 
 
 ## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+1.  Go to the project root directory.
+2.  Run in the CLI:  npm install
+3.  To start the server in production mode, run: npm start
+4.  To start the server in dev mode, run: npm devStart
+5.  To run unit tests, run: npm test
 
 ## Add your files
 
