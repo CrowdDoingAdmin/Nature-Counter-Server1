@@ -1,0 +1,37 @@
+{
+  "name": "naturecounterserver",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prod": "./bin/www",
+    "start": "node ./bin/www",
+    "devStart": "nodemon ./bin/www",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@derhuerst/query-overpass": "^2.0.0",
+    "axios": "^1.2.2",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "express": "~4.16.1",
+    "firebase": "^9.15.0",
+    "firebase-admin": "^9.5.0",
+    "geolib": "^3.3.3",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.11.15",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-timezone": "^1.3.0",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.7",
+    "overpass.js": "^1.0.0",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
