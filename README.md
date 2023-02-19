@@ -1,7 +1,7 @@
 # Nature Counter Server
 This repository is for the backend server for the Nature Counter App hosted on Azure.
 
-It follows an MVC model and is constantly being improved!
+It follows an MVC model and is constantly being improved!  Create a branch, make some changes, test it, and create a merge request when ready!
 
 
 ## Getting started
