@@ -5,7 +5,7 @@
   "scripts": {
     "prod": "./bin/www",
     "start": "node ./bin/www",
-    "devStart": "nodemon ./bin/www",
+    "dev": "nodemon ./bin/www",
     "test": "jest --no-cache"
   },
   "dependencies": {
