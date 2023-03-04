@@ -40,7 +40,7 @@ module.exports = {
     getUserById: async (req, res, next) => {
         const id = req.params.userId;
         try {
-            const user = await UserDetail.findOne({ uid: id });
+            const user = await UserDetail.findOne({ _id: id });
             if (!user) {
                 throw createError(404, 'User does not exits');
             } else {

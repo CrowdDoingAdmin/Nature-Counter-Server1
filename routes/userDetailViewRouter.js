@@ -9,11 +9,13 @@ const userDetailViewController = require('../controllers/userDetailViewControlle
 userDetailViewRouter.use(bodyParser.json());
 
 userDetailViewRouter.route('/')
-    .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
     //.get(cors.cors, authenticate.verifyUser, userDetailViewController.getAllUsers);
+    .put(cors.cors, authenticate.verifyUser, userDetailViewController.updateUserById)
+    .post(cors.corsWithOptions, authenticate.verifyUser, userDetailViewController.addUser)
 
 userDetailViewRouter.route('/:userId')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-    .get(cors.cors, authenticate.verifyUser, userDetailViewController.getUserById);
+    .get(authenticate.verifyUser, userDetailViewController.getUserById);
+
 
 module.exports = userDetailViewRouter;

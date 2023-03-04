@@ -4,9 +4,8 @@ var Schema = mongoose.Schema;
 
 var FavoriteLocSchema = new Schema (
   {
-    location: { type: String, required: true, maxLength: 200 },
-    userId: {type: Schema.Types.ObjectId, ref: "UserDetail", required: true},
-
+    location: { type: String, required: [true, "Location required."], maxLength: 200 },
+    userId: {type: Schema.Types.ObjectId, ref: "UserDetail", required: [true, "User ID required."]},
   }
 );
 

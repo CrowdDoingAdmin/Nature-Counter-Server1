@@ -20,6 +20,7 @@ const getAuthToken = (req, res, next) => {
 // };
 
 exports.verifyUser = (req, res, next) => {
+    console.log('VERIFYING USER');
     getAuthToken(req, res, async () => {
         try {
             const { authToken } = req;
