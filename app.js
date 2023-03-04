@@ -26,8 +26,8 @@ const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
 const journalRouter = require('./routes/journalRouter');
 // const url = 'mongodb+srv://Ruchi30:RJ2NVRZcSLJpOXVW@cluster0.f8c1f.mongodb.net/natureCounterDb?retryWrites=true&w=majority';
-const url = process.env.AZURE_DB_URL;
-// const url = process.env.MONGO_DB_URL;
+// const url = process.env.AZURE_DB_URL;
+const url = process.env.MONGO_DB_URL;
 
 const connect = mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -63,7 +63,6 @@ app.use(cookieParser());
 //app.use(decodeIDToken);
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log('1--');
 app.use('/', indexRouter);
 app.use('/articles', articleRouter);
 app.use('/benefits', benefitRouter);
@@ -88,7 +87,8 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-  res.json({ message: "Welcome to Nature Counter." });
+  // res.json({ message: "Welcome to Nature Counter." });
+  
   // render the error page
   res.status(err.status || 500);
   res.render('error');

@@ -2,27 +2,33 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const User = new Schema({
-    uid: {
-        type: String,
-        required: true,
-        unique: true
-    },
     email: {
         type: String,
-        required: true,
+        required: [true, 'Email required'],
+        unique: true
     },
     name: {
         type: String,
+        required: [true, 'Name required'],
     },
     gender: {
         type: String,
+        required: [true, 'Gender required'],
     },
     dob: {
         type: Date,
     },
+    weekly_goal: {
+        type: Number,
+        max: [10080, 'Time exceeds amount of minutes per week']
+    },
     admin: {
         type: Boolean,
-        default: false
+        default: false,
+    },
+    userAgreementTAC: {
+        type: Boolean,
+        default: false,
     }
 }, {
     timestamps: true
