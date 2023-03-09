@@ -19,12 +19,12 @@ var userGoalViewRouter = require('./routes/userGoalViewRouter');
 var healthCategoryRouter = require('./routes/healthCategoriesRouter');
 var nearParkRouter = require('./routes/nearParkRouter');
 var favoriteLocRouter = require('./routes/favoriteLocRouter');
-
+var journalRouter = require('./routes/journalRouter');
+var homescreenRouter = require('./routes/homescreenRouter');
 // const redisClient = require('./config/redis')
 
 const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
-const journalRouter = require('./routes/journalRouter');
 // const url = 'mongodb+srv://Ruchi30:RJ2NVRZcSLJpOXVW@cluster0.f8c1f.mongodb.net/natureCounterDb?retryWrites=true&w=majority';
 // const url = process.env.AZURE_DB_URL;
 const url = process.env.MONGO_DB_URL;

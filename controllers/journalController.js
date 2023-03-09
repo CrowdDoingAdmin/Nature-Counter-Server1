@@ -8,6 +8,7 @@ module.exports = {
             const id = req.params.userId;
             if (id){
                 const entries = await Journal.find({ userId: id });
+                
                 res.json(entries);
 
             }
@@ -75,5 +76,58 @@ module.exports = {
             res.status(404).json(err);
             next(err)
         }
-    }
+    },
+    getTotalHour: async (req, res, next) => {
+        try {
+            
+            const id = req.params.userId;
+            const startDate = req.body.start_time;
+            const endDate = req.body.end_time;
+            if (id){
+                // const entries = await Journal.find({start_time: {$gte: startDate, $lte: endDate}});
+                const entries = await Journal.aggregate([
+                    {$match:{userId: new mongoose.Types.ObjectId(id)}},
+                    {$match:{start_time: {$gte: new Date(startDate), $lte: new Date(endDate)}}},
+                    {$project:{userId: "$userId", duration: {$divide: [{$subtract: ["$end_time", "$start_time"]}, 1000]}}},
+                    {$group: {_id: "$userId", totalMin: {$sum : "$duration"}}}
+
+
+                ]);
+
+                res.json(entries);
+
+            }
+        } catch (err) {
+            res.status(404).json(err);
+            next(err)
+        }
+    },
+
+    getWeeklySummary: async (req, res, next) => {
+        const totalMin = 0;
+        try {
+            
+            const id = req.params.userId;cd
+            const startDate = req.body.start_time;
+            const endDate = req.body.end_time;
+            if (id){
+                // const entries = await Journal.find({start_time: {$gte: startDate, $lte: endDate}});
+                const entries = await Journal.aggregate([
+                    {$match:{userId: new mongoose.Types.ObjectId(id)}},
+                    {$match:{start_time: {$gte: new Date(startDate), $lte: new Date(endDate)}}},
+                    {$project:{userId: "$userId", start_time:"$start_time",duration: {$divide: [{$subtract: ["$end_time", "$start_time"]}, 1000]}}},
+                    
+
+
+                ]);
+
+                res.json(entries);
+
+            }
+        } catch (err) {
+            res.status(404).json(err);
+            next(err)
+        }
+    },
 }
+
