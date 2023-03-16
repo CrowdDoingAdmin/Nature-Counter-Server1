@@ -75,7 +75,7 @@ app.use('/healthCategories', healthCategoryRouter);
 app.use('/natureAreas', nearParkRouter);
 app.use('/journal', journalRouter);
 app.use('/favoriteLoc', favoriteLocRouter);
-
+app.use('/homescreen', homescreenRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
