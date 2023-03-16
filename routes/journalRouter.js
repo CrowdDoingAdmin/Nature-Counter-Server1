@@ -20,4 +20,12 @@ journalRouter.route('/:userId/:entryId')
 journalRouter.route('/:userId/date')
     .post(cors.cors,authenticate.verifyUser, journalController.getTotalHour);
     
+    //api: journal/:userId/date
+    //post body example, return total hours of being in nature from start_time to end_time
+    // {
+
+    //     "start_time": "2023-01-20T14:56:59.301Z",
+    //     "end_time": "2023-01-27T15:56:59.301Z"
+
+    // }
 module.exports = journalRouter;

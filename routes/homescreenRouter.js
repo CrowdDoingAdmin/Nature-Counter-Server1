@@ -19,6 +19,14 @@ homescreenRouter.route('/:uid')
 
 homescreenRouter.route('/:userId/date')
     .post(cors.cors,authenticate.verifyUser,journalController.getWeeklySummary)
+        //api: journal/:userId/date
+    //post body example, return durations for everyday between start_time and end_time
+    // {
+
+    //     "start_time": "2023-01-20T14:56:59.301Z",
+    //     "end_time": "2023-01-27T15:56:59.301Z"
+
+    // }
     
 module.exports = homescreenRouter;
 
