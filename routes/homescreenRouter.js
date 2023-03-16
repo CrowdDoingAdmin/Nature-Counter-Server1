@@ -13,7 +13,7 @@ homescreenRouter.use(bodyParser.json());
 
 
 homescreenRouter.route('/:uid')
-    .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+    .options(cors.authenticate.verifyUser,corsWithOptions, (req, res) => { res.sendStatus(200); })
     .post(cors.cors,authenticate.verifyUser,journalController.postEntries)
     .get(cors.cors,authenticate.verifyUser,homescreenController.getStopwatch);
 
