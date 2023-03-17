@@ -65,7 +65,7 @@ module.exports = {
         const id = req.params.articleId;
         try {
             const article = await Articles.findByIdAndRemove(id)
-            res.json();
+            res.json(article);
         } catch (err) {
             console.log(err.message);
             next(err)

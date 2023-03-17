@@ -17,5 +17,8 @@ userDetailViewRouter.route('/:userId')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
     .get(authenticate.verifyUser, userDetailViewController.getUserById);
 
+userDetailViewRouter.route('/email/:email')
+    .get(authenticate.verifyUser, userDetailViewController.getUserByEmail);
+
 
 module.exports = userDetailViewRouter;

@@ -1,11 +1,13 @@
+// DO NOT USE
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserViewSchema = new Schema({
-    uid: {
-        type: String,
-        required: true
-    },
+    // uid: {
+    //     type: String,
+    //     required: true
+    // },
     email: {
         type: String
     },
