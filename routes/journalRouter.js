@@ -7,13 +7,15 @@ const journalController = require('../controllers/journalController');
 
 journalRouter.use(bodyParser.json());
 
-journalRouter.route('/:userId')
-    .get(cors.cors, authenticate.verifyUser, journalController.getAllEntriesByUserId)
-    .post(cors.corsWithOptions, authenticate.verifyUser, journalController.postEntries)
-    .delete(cors.corsWithOptions, authenticate.verifyUser, journalController.deleteAllEntries);
+journalRouter.route('/')
+.delete(cors.corsWithOptions, authenticate.verifyUser, journalController.deleteAllEntries);
 
-journalRouter.route('/:userId/:entryId')
+journalRouter.route('/allentries')
+.get(cors.cors, authenticate.verifyUser, journalController.getAllEntriesByUserId)
+
+journalRouter.route('/singleentry')
     .get(cors.cors, authenticate.verifyUser, journalController.getEntryById)
+    .post(cors.corsWithOptions, authenticate.verifyUser, journalController.postEntries)
     .put(cors.corsWithOptions, authenticate.verifyUser, journalController.updateEntryById)
     .delete(cors.corsWithOptions, authenticate.verifyUser, journalController.deleteEntryById);
 

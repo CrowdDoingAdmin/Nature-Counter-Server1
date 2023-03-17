@@ -4,23 +4,25 @@ const Schema = mongoose.Schema;
 const articleSchema = new Schema({
     category: {
         type: String,
-        required: true,
+        required: [true, 'Category required'],
     },
     title: {
         type: String,
-        required: true,
+        required: [true, 'Title required'],
         unique: true
     },
     subTitle: {
         type: String
     },
+    author: {
+        type: String,
+    },
     image: {
         type: String,
-        required: true
     },
     readTime: {
         type: Number,
-        required: true
+        required: [true, 'Read time required'],
     },
     featured: {
         type: Boolean,
@@ -28,7 +30,11 @@ const articleSchema = new Schema({
     },
     description: {
         type: String,
-        required: true
+        required: [true, 'Description required'],
+    },
+    archived: {
+        type: Boolean,
+        default: false
     }
 }, {
     timestamps: true

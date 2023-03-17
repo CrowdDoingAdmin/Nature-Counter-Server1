@@ -1,13 +1,28 @@
 const mongoose = require('mongoose');
 const createError = require('http-errors');
-const UserDetailView = require('../models/userDetailView');
 const UserDetail = require('../models/user');
 
 module.exports = {
     getAllUsers: async (req, res, next) => {
         try {
-            const user = await UserDetailView.find();
+            const user = await UserDetail.find();
             res.json(user);
+        } catch (err) {
+            console.log(err.message);
+            next(err)
+        }
+    },
+    getUserByEmail: async (req, res, next) => {
+        const email = req.params.email;
+        try {
+                const user = await UserDetail.find({ email: email });
+                if (!user) {
+                    throw createError(404, 'User does not exits');
+                } else if (user.length > 1) {
+                    throw createError(404, 'Multiple users found.');
+                } else {
+                    res.json(user);
+                }
         } catch (err) {
             console.log(err.message);
             next(err)
@@ -38,6 +53,7 @@ module.exports = {
                 throw createError(404, 'Email already exits');
             } else {
                 const newUser = new UserDetail(req.body);
+                console.log('1------', newUser)
                 await newUser.save(); 
                 res.json(newUser);
             }     

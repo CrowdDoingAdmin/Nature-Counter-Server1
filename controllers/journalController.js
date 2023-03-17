@@ -5,11 +5,10 @@ const Journal = require('../models/journalSchema');
 module.exports = {
     getAllEntriesByUserId: async (req, res, next) => {
         try {
-            const id = req.params.userId;
+            const id = req.query.firebase_id;
             if (id){
-                const entries = await Journal.find({ userId: id });
+                const entries = await Journal.find({ firebaseId: id });
                 res.json(entries);
-
             }
         } catch (err) {
             res.status(404).json(err);
@@ -22,7 +21,6 @@ module.exports = {
             const savedEntry = await newEntry.save();
             res.json(savedEntry);
         } catch (err) {
-            console.log('ERROR: ', err);
             res.status(404).json(err);
             next(err)
         }
@@ -37,9 +35,9 @@ module.exports = {
         }
     },
     getEntryById: async (req, res, next) => {
-        const id = req.params.entryId;
+        const journalId = req.query.journal_id;
         try {
-            const entry = await Journal.findById(id);
+            const entry = await Journal.findById(journalId);
             if (!entry) {
                 throw createError(404, 'Entry does not exits');
             } else {
@@ -51,9 +49,9 @@ module.exports = {
         }
     },
     updateEntryById: async (req, res, next) => {
-        const id = req.params.entryId;
+        const journalId = req.query.journal_id;
         try {
-            const entry = await Journal.findByIdAndUpdate(id, {
+            const entry = await Journal.findByIdAndUpdate(journalId, {
                 $set: req.body
             }, { new: true });
             if (!entry) {
@@ -67,9 +65,9 @@ module.exports = {
         }
     },
     deleteEntryById: async (req, res, next) => {
-        const id = req.params.entryId;
+        const journalId = req.query.journal_id;
         try {
-            const deletedEntry = await Journal.findByIdAndRemove(id)
+            const deletedEntry = await Journal.findByIdAndRemove(journalId);
             res.json(deletedEntry);
         } catch (err) {
             res.status(404).json(err);

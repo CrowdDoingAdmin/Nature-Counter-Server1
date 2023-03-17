@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const User = new Schema({
+const UserV1 = new Schema({
     email: {
         type: String,
         required: [true, 'Email required'],
+        unique: true
+    },
+    firebaseId: {
+        type: String,
+        required: [true, 'Firebase ID required'],
         unique: true
     },
     name: {
@@ -35,5 +40,5 @@ const User = new Schema({
 });
 
 
-const UserDetail = mongoose.model("UserDetails", User);
+const UserDetail = mongoose.model("UserDetails", UserV1);
 module.exports = UserDetail;
