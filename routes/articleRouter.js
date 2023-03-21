@@ -12,13 +12,11 @@ articleRouter.use(bodyParser.json());
 
 
 articleRouter.route('/')
-    .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
     .get(cors.cors, authenticate.verifyUser, ArticleController.getAllArticles)
     .post(cors.corsWithOptions, authenticate.verifyUser, ArticleController.postArticles)
     .delete(cors.corsWithOptions, authenticate.verifyUser, ArticleController.deleteAllArticles);
 
 articleRouter.route('/:articleId')
-    .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
     .get(cors.cors, authenticate.verifyUser, ArticleController.getArticleById)
     .put(cors.corsWithOptions, authenticate.verifyUser, ArticleController.updateArticleById)
     .delete(cors.corsWithOptions, authenticate.verifyUser, ArticleController.deleteArticleById);

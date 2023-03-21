@@ -68,10 +68,10 @@ app.use('/articles', articleRouter);
 app.use('/benefits', benefitRouter);
 app.use('/userdetails', userRouter);
 app.use('/usergoals', goalRouter);
-app.use('/symptoms', symptomRouter);
+// app.use('/symptoms', symptomRouter);
 app.use('/user_details_views', userDetailViewRouter);
-app.use('/user_goals_views', userGoalViewRouter);
-app.use('/healthCategories', healthCategoryRouter);
+// app.use('/user_goals_views', userGoalViewRouter);
+// app.use('/healthCategories', healthCategoryRouter);
 app.use('/natureAreas', nearParkRouter);
 app.use('/journal', journalRouter);
 app.use('/favoriteLoc', favoriteLocRouter);
@@ -91,7 +91,8 @@ app.use(function(err, req, res, next) {
   
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  console.log('ERROR: ', err);
+  // res.render('error');
 });
 
 module.exports = app;
