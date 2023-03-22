@@ -19,4 +19,6 @@ journalRouter.route('/singleentry')
     .put(cors.corsWithOptions, authenticate.verifyUser, journalController.updateEntryById)
     .delete(cors.corsWithOptions, authenticate.verifyUser, journalController.deleteEntryById);
 
+journalRouter.route('/date')
+    .post(cors.cors,authenticate.verifyUser,journalController.getTotalHour);
 module.exports = journalRouter;

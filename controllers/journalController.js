@@ -83,10 +83,10 @@ module.exports = {
             if (id){
                 // const entries = await Journal.find({start_time: {$gte: startDate, $lte: endDate}});
                 const entries = await Journal.aggregate([
-                    {$match:{firebase_id: id}},
+                    {$match:{firebaseId: id}},
                     {$match:{start_time: {$gte: new Date(startDate), $lte: new Date(endDate)}}},
-                    {$project:{firebase_id: "$firebase_id", duration: {$divide: [{$subtract: ["$end_time", "$start_time"]}, 1000]}}},
-                    {$group: {_id: "$firebase_id", totalMin: {$sum : "$duration"}}}
+                    {$project:{firebaseId: "$firebaseId", duration: {$divide: [{$subtract: ["$end_time", "$start_time"]}, 1000]}}},
+                    {$group: {_id: "$firebaseId", totalMin: {$sum : "$duration"}}}
 
 
                 ]);
@@ -109,9 +109,9 @@ module.exports = {
             if (id){
                 // const entries = await Journal.find({start_time: {$gte: startDate, $lte: endDate}});
                 const entries = await Journal.aggregate([
-                    {$match:{firebase_id: id}},
+                    {$match:{firebaseId: id}},
                     {$match:{start_time: {$gte: new Date(startDate), $lte: new Date(endDate)}}},
-                    {$project:{firebase_id: "$firebase_id", start_time:"$start_time",duration: {$divide: [{$subtract: ["$end_time", "$start_time"]}, 1000]}}},
+                    {$project:{firebaseId: "$firebaseId", start_time:"$start_time",duration: {$divide: [{$subtract: ["$end_time", "$start_time"]}, 1000]}}},
                     
 
 
