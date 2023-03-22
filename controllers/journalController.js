@@ -77,16 +77,16 @@ module.exports = {
     getTotalHour: async (req, res, next) => {
         try {
             
-            const id = req.params.userId;
+            const id = req.query.firebase_id;
             const startDate = req.body.start_time;
             const endDate = req.body.end_time;
             if (id){
                 // const entries = await Journal.find({start_time: {$gte: startDate, $lte: endDate}});
                 const entries = await Journal.aggregate([
-                    {$match:{userId: new mongoose.Types.ObjectId(id)}},
+                    {$match:{firebase_id: id}},
                     {$match:{start_time: {$gte: new Date(startDate), $lte: new Date(endDate)}}},
-                    {$project:{userId: "$userId", duration: {$divide: [{$subtract: ["$end_time", "$start_time"]}, 1000]}}},
-                    {$group: {_id: "$userId", totalMin: {$sum : "$duration"}}}
+                    {$project:{firebase_id: "$firebase_id", duration: {$divide: [{$subtract: ["$end_time", "$start_time"]}, 1000]}}},
+                    {$group: {_id: "$firebase_id", totalMin: {$sum : "$duration"}}}
 
 
                 ]);
@@ -101,18 +101,17 @@ module.exports = {
     },
 
     getWeeklySummary: async (req, res, next) => {
-        const totalMin = 0;
         try {
             
-            const id = req.params.userId;cd
+            const id = req.query.firebase_id;
             const startDate = req.body.start_time;
             const endDate = req.body.end_time;
             if (id){
                 // const entries = await Journal.find({start_time: {$gte: startDate, $lte: endDate}});
                 const entries = await Journal.aggregate([
-                    {$match:{userId: new mongoose.Types.ObjectId(id)}},
+                    {$match:{firebase_id: id}},
                     {$match:{start_time: {$gte: new Date(startDate), $lte: new Date(endDate)}}},
-                    {$project:{userId: "$userId", start_time:"$start_time",duration: {$divide: [{$subtract: ["$end_time", "$start_time"]}, 1000]}}},
+                    {$project:{firebase_id: "$firebase_id", start_time:"$start_time",duration: {$divide: [{$subtract: ["$end_time", "$start_time"]}, 1000]}}},
                     
 
 

@@ -12,14 +12,14 @@ homescreenRouter.use(bodyParser.json());
 
 
 
-homescreenRouter.route('/:uid')
+homescreenRouter.route('/')
     .options(cors.corsWithOptions, authenticate.verifyUser, (req, res) => { res.sendStatus(200); })
     .post(cors.cors,authenticate.verifyUser,journalController.postEntries)
     .get(cors.cors,authenticate.verifyUser,homescreenController.getStopwatch);
 
-homescreenRouter.route('/:userId/date')
+homescreenRouter.route('/date')
     .post(cors.cors,authenticate.verifyUser,journalController.getWeeklySummary)
-        //api: home/:userId/date
+        //api: home/date/?firebaseId=
     //post body example, return durations for everyday between start_time and end_time
     // {
 
