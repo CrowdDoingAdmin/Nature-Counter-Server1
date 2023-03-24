@@ -14,7 +14,8 @@ var JournalSchema = new Schema(
           values:["AK","AL","AR","AZ","CA","CO","CT","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY"],
           message: "{VALUE} is not a state"
           } },
-      zip: { type: String }
+      zip: { type: String },
+      category : {type: string}
     },
     start_time: { type: Date, required: true },
     end_time: { type: Date, required: true },
