@@ -15,7 +15,7 @@ var JournalSchema = new Schema(
           message: "{VALUE} is not a state"
           } },
       zip: { type: String },
-      category : {type: string}
+      category: {type: String}
     },
     start_time: { type: Date, required: true },
     end_time: { type: Date, required: true },
