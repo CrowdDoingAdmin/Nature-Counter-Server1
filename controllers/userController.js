@@ -16,7 +16,7 @@ module.exports = {
     postUser: async (req, res, next) => {
         const id = req.body.uid;
         try {
-            const user = await UserDetail.findOne({ uid: id });
+            const user = await UserDetail.findOne({ firebaseId: id });
             if (user) {
                 throw createError(404, 'User already exits');
             } else {
@@ -40,7 +40,7 @@ module.exports = {
     getUserById: async (req, res, next) => {
         const id = req.params.userId;
         try {
-            const user = await UserDetail.findOne({ _id: id });
+            const user = await UserDetail.findOne({ firebaseId: id });
             if (!user) {
                 throw createError(404, 'User does not exits');
             } else {
@@ -54,7 +54,7 @@ module.exports = {
     updateUserById: async (req, res, next) => {
         const id = req.params.userId;
         try {
-            const user = await UserDetail.findOneAndUpdate({ uid: id }, {
+            const user = await UserDetail.findOneAndUpdate({ firebaseId: id }, {
                 $set: req.body
             }, { new: true });
             res.json(user);
@@ -66,7 +66,7 @@ module.exports = {
     deleteUserById: async (req, res, next) => {
         const id = req.params.userId;
         try {
-            const user = await UserDetail.findByIdAndRemove(id)
+            const user = await UserDetail.findOneAndDelete({ firebaseId: id})
             res.json(user);
         } catch (err) {
             console.log(err.message);

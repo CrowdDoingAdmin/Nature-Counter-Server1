@@ -9,7 +9,7 @@ require('dotenv').config();
 const decodeIDToken = require('./config/firebaseauth');
 var indexRouter = require('./routes/index');
 var articleRouter = require('./routes/articleRouter');
-var benefitRouter = require('./routes/benefitRouter');
+var timeBenefitRouter = require('./routes/timeBenefitRouter');
 var userRouter = require('./routes/userRouter');
 var goalRouter = require('./routes/goalRouter');
 var goalRouter = require('./routes/goalRouter');
@@ -65,7 +65,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/articles', articleRouter);
-app.use('/benefits', benefitRouter);
+app.use('/timebenefits', timeBenefitRouter);
 app.use('/userdetails', userRouter);
 app.use('/usergoals', goalRouter);
 // app.use('/symptoms', symptomRouter);
