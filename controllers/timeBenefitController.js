@@ -8,27 +8,28 @@ const timeBasedBenefits = require('../models/timeBenefitSchema');
 //         const newBenefit = new timeBasedBenefits(benefits[i]);
 //         newBenefit.save(function(err, doc) {
 //             if (err) return console.error(err);
-//             console.log("Document inserted successfully!");
+//             console.log(`Inserted benefit with time ${benefits[i].time}`);
 //         });
 //     }
 // }
 
-function groupBenefits(benefits, time){
-    let newBenefit = {
-        time: time,
-        description : []
-    };
-    for(let i=0; i< benefits.length;i++){
-        newBenefit.description.push.apply(newBenefit.description, benefits[i].description);
-    }
+// function groupBenefits(benefits, time){
+//     let newBenefit = {
+//         time: time,
+//         description : []
+//     };
+//     for(let i=0; i< benefits.length;i++){
+//         newBenefit.description.push.apply(newBenefit.description, benefits[i].description);
+//     }
 
-    return newBenefit
-}
+//     return newBenefit
+// }
 
 module.exports = {
     getAllBenefits: async (req, res, next) => {
         try {
-            const benefit = await timeBasedBenefits.find({});    
+            const benefit = await timeBasedBenefits.find({});
+            // push_data(benefits);
             res.json(benefit);
         } catch (err) {
             console.log(err.message);
@@ -39,13 +40,7 @@ module.exports = {
         const time = req.params.time;
         try {
             const benefit = await timeBasedBenefits.find({ "time": { $lte: time }});
-            if (!benefit.length) {
-                res.json(benefit)
-                // throw createError(404, 'Benefit does not exits');
-            } else {
-                newBenefit = groupBenefits(benefit, time);
-                res.json(newBenefit);
-            }
+            res.json(benefit);
         } catch (err) {
             console.log(err.message);
             next(err)
