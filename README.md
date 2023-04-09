@@ -9,7 +9,7 @@ It follows an MVC model and is constantly being improved!  Create a branch, make
 2.  Run in the CLI:  npm install
 3.  To start the server in production mode, run: npm start
 4.  To start the server in dev mode, run: npm run dev
-5.  To run unit tests, run: npm test
+5.  To run unit tests, run: npm test 
 
 ## Add your files
 
