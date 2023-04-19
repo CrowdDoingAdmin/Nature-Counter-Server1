@@ -9,7 +9,15 @@ nonTimeBasedBenefitsRouter
   .get(
     cors.cors,
     authenticate.verifyUser,
-    nonTimeBasedBenefitsController.getNonTimeBasedBenefits
+    nonTimeBasedBenefitsController.getAllNonTimeBasedBenefits
+  );
+
+nonTimeBasedBenefitsRouter
+  .route("/single")
+  .get(
+    cors.cors,
+    authenticate.verifyUser,
+    nonTimeBasedBenefitsController.getOneNonTimeBasedBenefit
   );
 
 module.exports = nonTimeBasedBenefitsRouter;
