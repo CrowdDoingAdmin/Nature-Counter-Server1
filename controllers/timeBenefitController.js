@@ -13,18 +13,6 @@ const timeBasedBenefits = require('../models/timeBenefitSchema');
 //     }
 // }
 
-// function groupBenefits(benefits, time){
-//     let newBenefit = {
-//         time: time,
-//         description : []
-//     };
-//     for(let i=0; i< benefits.length;i++){
-//         newBenefit.description.push.apply(newBenefit.description, benefits[i].description);
-//     }
-
-//     return newBenefit
-// }
-
 module.exports = {
     getAllBenefits: async (req, res, next) => {
         try {
@@ -35,15 +23,15 @@ module.exports = {
             console.log(err.message);
             next(err)
         }
-    },
-    getBenefitByTime: async (req, res, next) => {
-        const time = req.params.time;
-        try {
-            const benefit = await timeBasedBenefits.find({ "time": { $lte: time }});
-            res.json(benefit);
-        } catch (err) {
-            console.log(err.message);
-            next(err)
-        }
     }
+    // getBenefitByTime: async (req, res, next) => {
+    //     const time = req.params.time;
+    //     try {
+    //         const benefit = await timeBasedBenefits.find({ "time": { $lte: time }});
+    //         res.json(benefit);
+    //     } catch (err) {
+    //         console.log(err.message);
+    //         next(err)
+    //     }
+    // }
 }

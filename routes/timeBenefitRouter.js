@@ -11,9 +11,9 @@ benefitRouter.route('/')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
     .get(cors.cors, authenticate.verifyUser,BenefitController.getAllBenefits)
 
-benefitRouter.route('/:time')
-    .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-    .get(cors.cors, authenticate.verifyUser, BenefitController.getBenefitByTime)
+// benefitRouter.route('/:time')
+//     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+//     .get(cors.cors, authenticate.verifyUser, BenefitController.getBenefitByTime)
 
 
 module.exports = benefitRouter;
