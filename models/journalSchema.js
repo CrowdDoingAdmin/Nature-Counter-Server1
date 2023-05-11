@@ -7,7 +7,7 @@ var JournalSchema = new Schema(
     location: {
       latitude: { type: Number },
       longitude: { type: Number },
-      name: [{ type: String }],
+      name: { type: String },
       city: { type: String },
       stateInitials: { type: String,
         enum: {
@@ -15,7 +15,7 @@ var JournalSchema = new Schema(
           message: "{VALUE} is not a state"
           } },
       zip: { type: String },
-      category: {type: String}
+      category: [{ type: String }]
     },
     start_time: { type: Date, required: true },
     end_time: { type: Date, required: true },
